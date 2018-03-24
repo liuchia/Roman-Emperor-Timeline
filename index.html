@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta name="description" content="">
+    	<meta name="author" content="">
+    	<!--<link rel="icon" href="../../../../favicon.ico">-->
+
+    	<title>Timeline of the Emperors of Rome</title>
+
+	    <link href="https://bootswatch.com/4/lux/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
+		<script type = "text/javascript" src = "https://d3js.org/d3.v4.js"></script>
+	</head>
+
+	<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"><img src="/images/Symbol.png" id="logo"></a>
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <span class="nav-link">Timeline of the Emperors of Rome.</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Github Repository.</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://en.wikipedia.org/wiki/List_of_Roman_emperors">Where I Got the Data.</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <select class="custom-select" id="fatefilter">
+          <option selected="No Filter">No Filter</option>
+          <option value="Natural Causes">Died of Natural Causes</option>
+          <option value="Assassinated">Assassinated</option>
+          <option value="Deposed">Deposed</option>
+          <option value="Executed">Executed</option>
+          <option value="Died in Battle">Died in Battle</option>
+          <option value="Praetorian Guard">Praetorian Guard</option>
+          <option value="Abdicated">Abdicated</option>
+          <option value="Suicide">Suicide</option>
+        </select>
+      </div>
+    </nav>
+
+	<div id = "container"></div>
+
+  <div class="jumbotron">
+    <p class="lead">This is an interactive timeline of the rulers of the Roman Empire, stretching from the creation of the empire under Augustus in 27BC up to the Fall of Constantinople in 1453. The Laskarid Dynasty of the Nicene Empire fills the brief hole after the the Crusaders sacked Constantinople in 1204. The x-axis of the graph represents time, which is separated with 10 year intervals, and the y-axis just highlights the number of rulers the Romans had in the corresponding year. Time can be traversed via dragging the chart and the names and dynasties of all emperors of a year is displayed with tooltips when the cursor is within the timeline. The Dynasty or the general period an emperor (or empress) belonged is colour-coded - visually separating the progression of the empire. With this brief explanation out of the way, have some random stats from the dataset!</p>
+    <hr class="my-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <h3>
+            <small class="text-muted">five</small>
+            Longest Reigns
+          </h3>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Emperor</th>
+                <th scope="col">Dynasty</th>
+                <th scope="col">Years</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Basil II</td>
+                <td>Macedonian</td>
+                <td>49</td>
+              </tr>  
+              <tr>
+                <th scope="row">2</th>
+                <td>Theodosius II</td>
+                <td>Theodosian</td>
+                <td>48</td>
+              </tr>  
+              <tr>
+                <th scope="row">3</th>
+                <td>Constantine VII</td>
+                <td>Macedonian</td>
+                <td>46</td>
+              </tr>  
+              <tr>
+                <th scope="row">-</th>
+                <td>Andronikos II Palaiologos</td>
+                <td>Palaiologan</td>
+                <td>46</td>
+              </tr> 
+              <tr>
+                <th scope="row">5</th>
+                <td>Augustus</td>
+                <td>Julio-Claudian</td>
+                <td>40</td>
+              </tr> 
+            </tbody>
+          </table> 
+        </div>
+        <div class="col-sm">
+          <h3>
+            <small class="text-muted">five</small>
+            Most Common Fates
+          </h3>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Fate</th>
+                <th scope="col">%</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Natural Causes</td>
+                <td>33.3</td>
+              </tr>  
+              <tr>
+                <th scope="row">2</th>
+                <td>Assassinated</td>
+                <td>19.2</td>
+              </tr>  
+              <tr>
+                <th scope="row">3</th>
+                <td>Deposed</td>
+                <td>18.6</td>
+              </tr>  
+              <tr>
+                <th scope="row">4</th>
+                <td>Executed</td>
+                <td>7.3</td>
+              </tr> 
+              <tr>
+                <th scope="row">5</th>
+                <td>Died in Battle</td>
+                <td>6.2</td>
+              </tr> 
+            </tbody>
+          </table> 
+        </div>
+      </div>
+    </div>
+    <p>Hi :o All data in dataset taken from Wikipedia page linked at top.</p>
+  </div>
+
+    <script
+      	src="https://code.jquery.com/jquery-3.2.1.js"
+      	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+      	crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script> <!-- bootstrap needs it .-. -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.0/d3.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
