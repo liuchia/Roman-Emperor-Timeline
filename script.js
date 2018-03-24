@@ -151,7 +151,7 @@ d3.csv("./data.csv", function(data) {
 		.attr("fill", "none")
 		.attr("stroke", function(emp) {return colors[emp.DYNASTY]})
 		.attr("stroke-width", radius/2)//radius*2 - 2)
-		.attr("id", function(emp) {return emp.NAME.split(' ').join('_')})
+		.attr("id", function(emp) {return emp.NAME.split(' ').join('_') + emp.START})
 
 	emplines.selectAll().data(data.filter(function(emp) {return emp.START != emp.END})).enter()
 		.append("circle")
@@ -161,7 +161,7 @@ d3.csv("./data.csv", function(data) {
 		.attr("fill", function(emp) {return colors[emp.DYNASTY]})
 		.attr("stroke", "#313131")
 		.attr("stroke-width", 2)
-		.attr("id", function(emp) {return "Head"+emp.NAME.split(' ').join('_')})
+		.attr("id", function(emp) {return "Head"+emp.NAME.split(' ').join('_') + emp.START})
 
 	emplines.selectAll().data(data).enter()
 		.append("circle")
@@ -171,7 +171,7 @@ d3.csv("./data.csv", function(data) {
 		.attr("fill", function(emp) {return colors[emp.DYNASTY]})
 		.attr("stroke", "#313131")
 		.attr("stroke-width", 2)
-		.attr("id", function(emp) {return "Tail"+emp.NAME.split(' ').join('_')})
+		.attr("id", function(emp) {return "Tail"+emp.NAME.split(' ').join('_') + emp.START})
 
 	for (var i = 0; i < 6; i++) {
 		var arrow = tooltip.append("polygon")
@@ -247,7 +247,7 @@ d3.csv("./data.csv", function(data) {
 	fatefilter.onchange = function() {
 		for (var i = 0; i < data.length; i++) {
 			emp = data[i];
-			var pline_id = emp.NAME.split(' ').join('_');
+			var pline_id = emp.NAME.split(' ').join('_') + emp.START;
 			var pline = emplines.select("#"+pline_id);
 			var head = emplines.select("#Head"+pline_id);
 			var tail = emplines.select("#Tail"+pline_id);
